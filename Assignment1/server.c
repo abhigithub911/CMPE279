@@ -76,19 +76,19 @@ void nonPrivileged(int forkedProcess, int new_socket) {
     int valread;
 
     if(forkedProcess==0) {
-        printf("Before setuid: UserId: %d, EffectiveUserId: %d",getuid(),geteuid());
+        printf("Before setuid: UserId: %d, EffectiveUserId: %d\n",getuid(),geteuid());
         int setuidToNobody = setuid(65534);
 
         if(setuidToNobody<0){
             perror("Failed to setuid");
             exit("EXIT_FAILURE");
         }else{
-            printf("After setuid: UserId: %d, EffectiveUserId: %d",getuid(),geteuid());
+            printf("After setuid: UserId: %d, EffectiveUserId: %d\n",getuid(),geteuid());
             valread = read(new_socket , buffer, 1024);
             printf("%s\n",buffer );
             send(new_socket , hello , strlen(hello) , 0);
             printf("Hello message sent\n");
         }
     }
-    return;
+    exit("Child process completed!");
 }
