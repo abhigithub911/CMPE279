@@ -90,5 +90,5 @@ void nonPrivileged(int forkedProcess, int new_socket) {
             printf("Hello message sent\n");
         }
     }
-    exit("Child process completed!");
+    return;
 }
