@@ -78,3 +78,15 @@ int socketSetUp_Privileged() {
 
     return new_socket;
 }
+
+
+/*
+Steps to run: 
+Compile using the following commands: 
+gcc child.c -o EXEC
+gcc server.c -o server
+
+run as super user
+sudo ./server
+This will execute the new process called child.c 
+same for the client with reduced privileges.
